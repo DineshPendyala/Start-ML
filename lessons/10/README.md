@@ -9,12 +9,11 @@
 | Topic | Description | Link |
 | --- | --- | --- |
 | Lesson | Linear Regression lesson | [Here](./linear_regression.ipynb) |
-| Solution  | Solution code for Lesson Prompts | [Here](./solution-code/linear_regression-solution.ipynb) |
-| Slides | Sample slides for this lesson (PPTX) | [Here](./slides/) |
+| Solution  | Solution code for Lesson Prompts | [Here](./solutions/linear_regression-solutions.ipynb) |
 | Practice | Kobe Shot Regularization | [Here](./practice) |
 |          | Simple Linear Regression | [Here](./practice) |
 |          | Regression Review Lab    | [Here](./practice) |
-| Datasets | Capital Bikeshare Rider Data, Kobe NBA data, Sacremento Real Estate Data | [Here](./data/) |
+| Datasets | Capital Bikeshare Rider Data, Kobe NBA data, Sacremento Real Estate Data | [Here](./datasets/) |
 
 
 > The lesson data was chosen because it generates approximate linear relationships using real-world data.
