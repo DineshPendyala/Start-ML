@@ -11,4 +11,4 @@ Unit 3 : Data Modelling | Train Test Split and Bias Variance
   - **Description** : Experiment with the Cross Validation practices Train-Test-Split and K-Folds while building and tuning models.
   - **Difficulty** : Easy
   - **Length** : Short
-  - **[Solution](./solution-code/train_test-cross_validation-lab-solutions.ipynb)**
+  - **[Solution](./solutions/train_test-cross_validation-lab-solutions.ipynb)**
