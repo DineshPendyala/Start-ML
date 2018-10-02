@@ -9,11 +9,10 @@
 | Topic | Description | Link |
 | --- | --- | --- |
 | Lesson | K-Nearest Neighbors with Scikit-Learn | [Here](./knn_with_sklearn.ipynb) |
-| Solution  | Solution code for lesson prompts | [Here](./solution-code/knn_with_sklearn-solution.ipynb) |
-| Data | 2015 Season Statistics for ~500 NBA Players | [Here](./data/NBA_players_2015.csv) |
-|  | The Iris Dataset (Flowers) | [Here](./data/iris.data) |
+| Solution  | Solution code for lesson prompts | [Here](./solutions/knn_with_sklearn-solutions.ipynb) |
+| Data | 2015 Season Statistics for ~500 NBA Players | [Here](./datasets/NBA_players_2015.csv) |
+|  | The Iris Dataset (Flowers) | [Here](./datasets/iris.data) |
 | Practice | Two sample activities to practice KNN | [Here](./practice/) |
-| Slides | Sample slide deck for lesson topic (PPTX)| [Here](./slides/) |
 
 
 > This lesson uses the Iris dataset and the NBA player statistics dataset. The Iris dataset allows students to easily make their own rules-based model and is easy to visualize for KNN. The NBA dataset results in a very nice curve for choosing K.
