@@ -9,10 +9,9 @@
 | Topic | Description | Link |
 | --- | --- | --- |
 | Lesson | Logistic Regression | [Here](./logistic-regression-starter.ipynb) |
-| Solution  | Solution code for lesson prompts | [Here](./solution-code/logistic-regression-solution.ipynb) |
+| Solution  | Solution code for lesson prompts | [Here](./solutions/logistic-regression-solutions.ipynb) |
 | Practice | Two activities: Bank Marketing and Multi-LogReg using Iris | [Here](./practice/) |
-| Data | College Admissions Data, Titanic Survivors, Glass, and practice data | [Here](./data/) |
-| Slides | Sample Slides for Log Reg, Confusion Matrix, and ROC | [Here](./slides/) |
+| Data | College Admissions Data, Titanic Survivors, Glass, and practice data | [Here](./datasets/) |
 | Extra Materials | Examples of Logistic Regression Implementation | [Here](./extra-materials/) |
 
 > These datasets were chosen because they are familiar datasets from previous lessons and have binary targets for logistic regression.
@@ -74,4 +73,4 @@ For more information on this topic, check out the following resources:
 - [Sklearn Logistic Regression Documentation](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&cad=rja&uact=8&ved=0ahUKEwj-ytGQkZjVAhWHej4KHaOcCnYQFggzMAE&url=http%3A%2F%2Fscikit-learn.org%2Fstable%2Fmodules%2Fgenerated%2Fsklearn.linear_model.LogisticRegression.html&usg=AFQjCNGpSyUzpbaClG8IQEPJmB63CQZlrg)
 - [Data School: Logistic Regression In-Depth](http://www.dataschool.io/guide-to-logistic-regression/)
 - [Logistic Regression for Machine Learning](http://machinelearningmastery.com/logistic-regression-for-machine-learning/)
-- [Video: Andrew Ng on Logistic Regression](https://www.youtube.com/watch?v=LLx4diIP83I)
+- [Video: Andrew Ng on Logistic Regression](https://www.youtube.com/watch?v=-la3q9d7AKQ)
