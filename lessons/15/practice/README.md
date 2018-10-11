@@ -1,27 +1,33 @@
-# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Webservices and APIs Practice
+# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Natural Language Processing Practice
 
-Unit 4 : DS Applications | Webservices and APIs
+Unit 4 : DS Applications | NLP
 
 ---
 
 ## Practices
 
-
-#### [Case Study Twitter API and NLP](./twitter_api_nlp-lab.ipynb)
-  - **Description** : Use the Twitter API to gather tweets from Donald Trump and Burnie Sanders and use them to build an ML model to classify tweets.
-  - **Difficulty** : Long
-  - **Length** : Advance
-  - **[Solution](./solution-code/twitter_api_nlp-lab-solutions.ipynb)**
-  - _**Note**_ : This lab is intended to be a guided lab until the independent practice questions.
-  
-#### [Practice Using APIs](./apis_practice-lab.ipynb)
-  - **Description** : Practice collecting data using the Sheetzu and TVmaze APIs
+#### [Intro to NLP lab](./intro_to_nlp-lab.ipynb)
+  - **Description** : Practice processing text data using Sklearn and NLTK
   - **Difficulty** : Moderate
   - **Length** : Moderate
-  - **[Solution](./solution-code/apis_practice-lab-solutions.ipynb)**
-
-#### [Webscraping with Selenium](./webscraping_selenium-lab.ipynb)
-  - **Description** : Practice using Selenium as a means to scrape data
+  - **[Solution](./solutions/intro_to_nlp-lab-solutions.ipynb)**
+  
+#### [NLP Review Lab](./nlp_review-lab.ipynb)
+  - **Description** : Review the basics of NLP and practice common methods for cleaning and analysis text data.
   - **Difficulty** : Moderate
   - **Length** : Long
-  - **[Solution](./solution-code/ebscraping_selenium-lab-solutions.ipynb)**
+  - **[Solution](./solutions/nlp_review-lab-solutions.ipynb)**
+  
+#### [Sentiment Analysis Lab](./sentiment_analysis-lab.ipynb)
+  - **Description** : Utilize NLP to create a model that classifies tweets according to sentimental value.
+  - **Difficulty** : Moderate
+  - **Length** : Short
+  - **[Solution](./solutions/sentiment_analysis-lab-solutions.ipynb)**
+  
+#### [Topic Modeling LDA (codealong)](./topic_modeling_lda-codealong.ipynb)
+  - **Description** : Walkthrough of using an unsupervised Natural Language analysis method; Latent Dirichlet Allocation.
+  - **Difficulty** : Advanced
+  - **Length** : Moderate
+  - **[Solution](./solutions/topic_modeling_lda-codealong-solutions.ipynb)**
+  - _**Note** : Intended to be an instructor led walkthrough_
+

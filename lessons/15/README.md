@@ -1,126 +1,85 @@
-# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Working With API Data
+# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Natural Language Processing
 
 > Unit 4: Required
-
----
 
 ## Materials We Provide
 
 | Topic | Description | Link |
 | --- | --- | --- |
-| Lesson | Part 1: APIs | [Here](./intro-to-web-services-apis.ipynb) |
-| Lesson | Part 2: Webscraping Demo (Optional; time permitting) | [Here](./webscraping-in-class.ipynb) |
-| Solutions | Sample solutions to lesson prompts | [Here](./solution-code/webscraping-in-class-solutions.ipynb) |
-| Practice | In-Class Practice Using APIs | [Here](./practice/apis_practice-lab.ipynb) |
-|          | Case Study Twitter APIs and NLP           | [Here](./practice/twitter_api_nlp-lab.ipynb)  |
-|          | Practice Webscraping with Selenium (Requires Chrome)   | [Here](./practice/webscraping_selenium-lab.ipynb)       |
-| Practice Solutions  | Solution code for all 3 practice activities | [Here](./practice/solution-code/) |
-| Slides | Sample slide decks for this topic (PPTX; deprecated) | [Here](./APIs/assets/slides/) |
+| Lesson | Natural Language Processing | [Here](./natural-language-processing.ipynb) |
+| Practice | Four sample NLP activities | [Here](./practice/) |
+| Data | Yelp Review and Tweet Datasets | [Here](./datasets/) |
+| Extra Materials | Optional materials on Bayes Theorem | [Here](./extra-materials) |
 
-> Please note: This lesson makes use of datasets from the `requests` library. The optional practice materials also include a `twitter-python` package. The webscraping module requires `selenium` and `geckodriver` and is best taught using Google Chrome.
+> The Yelp dataset was chosen because of its rich and colloquial text attributes, in addition to how well it lends itself to sentiment analysis.
+
+> *Note: This lesson also uses the Naive Bayes model MultinomialNB, which is often used for NLP applications, such as spam detection. An appendix is included at the end of the lesson for interested students. Supplemental materials are also offered if you want to explore Bayes-related topics.*
 
 ---
 
 ## Learning Objectives
 
-#### Part 1: Intro to Web Services & APIs
-_After this lesson, students will be able to:_
-- Identify relevant HTTP Verbs & their uses.
-- Describe Application Programming Interfaces (APIs) and know how to make calls and consume API data.
-- Access public APIs and get information back.
-- Read and write data in JSON format.
-- Demonstrate how to use the `requests` library.
-
-#### Part 2: Webscraping in Class (Optional)
-_After this lesson, students will be able to:_
-- Revisit how to locate elements on a webpage
-- Aquire unstructure data from the internet using Beautiful soup.
-- Discuss limitations associated with simple requests and urllib libraries
-- Introduce Selenium as a solution, and implement a scraper using selenium (Instructor Demo only)
+By the end of this lesson, students should be able to:
+- **Discuss** the major tasks involved with natural language processing
+- **Discuss**, on a low level, the components of natural language processing
+- **Identify** why natural language processing is difficult
+- **Demonstrate** text classification
+- **Demonstrate** common text preprocessing techniques
 
 ---
 
 ## Student Requirements
 
-Before this lesson(s), students should already be able to:
-- Interpret and use Python dictionaries
-- Build Pandas DataFrames from dictionaries
-- Perform simple data manipulation on Pandas objects\
-- Build `for` and `while` loops in Python
-- Use `pip install` for package management
+Before this lesson, students should already be able to:
+- Use Anaconda for package management
+- Use train/test/split to create a set of features and target values
+- Read data into a Pandas DataFrame
+- Build and evaluate predictive models using scikit-learn
 
 ---
 
-## Lesson Outline
+## Lesson Guide
 
-### Outline: Part 1 (Web Services & APIs)
-> TOTAL (170 min)
-
-- Introduction to APIs
-- What is an API? (10 min)
-- Famous APIs (5 min)
-    - Facebook
-    - Yelp
-    - Echonest
-- Web APIs (5 min)
-- Making API calls (5 min)
-- HTTP (10 min)
-- Web applications (5 min)
-- Demo: HTTP (10 min)
-- Independent practice: HTTP (10 min)
-- HTTP Request (10 min)
-    - HTTP Request methods
-    - HTTP Request structure
-- HTTP Response (5 min)
-    - Response types overview
-- JSON (10 min)
-- Independent practice: validating JSON (10 min)
-- Guided practice: pulling data from APIs (35 min)
-    - Example 1: Star Wars (15 min)
-    - Submit queries to the API (10 min)
-    - Example 2: Google Geocode (10 min)
-- OAuth (15 min)
-- Independent practice: python APIs (30 min)
-- Closing questions
-
-
-### Outline: Part 2 (Webscraping in Class)
-> TOTAL (170 min)
-
-- Introduction (10 min)
-- Building a web scraper (5 min)
-- Retrieving data from the HTML page (65 min)
-    - Retrieving the restaurant names (20 min)
-    - Challenge: Retrieving the restaurant locations (15 min)
-    - Retrieving the restaurant prices (10 min)
-    - Retrieving the restaurant number of bookings (20 min)
-- Introducting Selenium (90 min)
-    - Running JavaScript before scraping (15 min)
-    - Using regex to only get digits (20 min)
-    - Challenge: Use Pandas to create a DataFrame of bookings (40 min)
-    - Auto-typing using Selenium (15 min)
-- Summary
+- [Introduction to Natural Language Processing](#intro)
+- [Reading Yelp reviews with NLP](#yelp_rev)
+- [Text Classification](#text_class)
+- [Count Vectorization](#count_vec)
+    - [Using CountVectorizer in a model](#countvectorizer-model)
+    - [N-Grams](#ngrams)
+    - [Stopword Removal](#stopwords)
+	- [Count Vector Options](#cvec_opt)
+- [Intro to TextBlob](#textblob)
+	- [Stemming and Lemmatization](#stem)
+- [Term Frequency Inverse Document Frequency Vectorization](#tfidf)
+	- [Yelp Summary using TFIDF](#yelp_tfidf)
+- [Sentiment Analysis](#sentiment)
+- [BONUS: Adding Features to a Document Term Matrix](#add_feat)
+- [BONUS: More TextBlob Features](#more_textblob)
+- [APPENDIX: Intro to Naive Bayes & Text Classification](#bayes)
+- [Conclusion](#conclusion)
 
 ---
 
 ## Installation Notes
+To procede through the lesson, first install `TextBlob` as explained below. We tend to prefer Anaconda-based installations, since they tend to be tested with our other Anaconda packages. However, in this case TextBlob is not available on some platforms with Anaconda (e.g. Win64). To install textblob:
 
-When running this lesson, please check the following environment requirements:
-1. Have Beautiful Soup installed: ```pip install bs4```
+1. `conda install -c https://conda.anaconda.org/sloria textblob`
 
+**Or:**
 
-**If including Selenium demo:**
-1.  Install Selenium: ```pip install selenium```
-1.  Install the [FireFox browser](https://www.mozilla.org/en-US/firefox/new/).
-1.  Install GeckoDriver: ```pip install geckodriver```
+1. `pip install textblob`
+2. `python -m textblob.download_corpora lite`
+
 
 ---
 
 ## Additional Resources
+For more information, we recommend the following resources:
 
-For more information on this topic, check out the following resources:
-
-- Find elements: [Selenium docs](http://selenium-python.readthedocs.io/locating-elements.html#locating-elements)
-- Using Selenium to enter website information: [demo](http://thiagomarzagao.com/2013/11/12/webscraping-with-selenium-part-1/)
-- Python regex tester: [here](http://pythex.org/)
-- Setup Firefox profile: [here](http://stackoverflow.com/questions/9907492/how-to-get-firefox-working-with-selenium-webdriver-on-mac-osx)
+- Check out this [Yelp blog post](http://engineeringblog.yelp.com/2015/09/automatically-categorizing-yelp-businesses.html) how they completed a classification task (with over 1000 response variables!) using restaurant review text
+- Always check documentation: [CountVectorizer](http://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html), [HashingVectorizer](http://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.HashingVectorizer.html), [TF-IDF](http://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html)
+- Wikpedia's [feature hashing](https://github.com/generalassembly-studio/DSI-course-materials/tree/master/curriculum/04-lessons/week-06/4.1-lesson) and [hash functions](https://en.wikipedia.org/wiki/Hash_function) is a great place to turn for more info on hashing
+- Charlie Greenbacher's [Intro to NLP](http://spark-public.s3.amazonaws.com/nlp/slides/intro.pdf)
+- Wikipedia includes a [walkthrough](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) of TF-IDF
+- Google's [ngram tool](https://books.google.com/ngrams/graph?content=data+science&year_start=1800&year_end=2000&corpus=15&smoothing=3&share=&direct_url=t1%3B%2Cdata%20science%3B%2Cc0)
+- An experiment using NLP and Eigenfaces (Eigenvalues for face recognition) [for Tinder](http://dataconomy.com/hacking-tinder-with-facial-recognition-nlp/)
