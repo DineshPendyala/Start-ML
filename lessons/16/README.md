@@ -1,86 +1,96 @@
-# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Natural Language Processing
+# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Working with Time Series Data
 
-> Unit 4: Required
+> Unit 4, Flex
+
+---
 
 ## Materials We Provide
 
 | Topic | Description | Link |
 | --- | --- | --- |
-| Lesson | Natural Language Processing | [Here](./natural-language-processing.ipynb) |
-| Practice | Four sample NLP activities | [Here](./practice/) |
-| Data | Yelp Review and Tweet Datasets | [Here](./data/) |
-| Slides | Sample slide deck for this topic (PPTX, deprecated) | [Here](./slides/) |
-| Extra Materials | Optional materials on Bayes Theorem and Naive Bayes | [Here](./extra-materials) |
+| Lesson | Part I. Working With Time Series Data | [Here](./01_time_series.ipynb) |
+|  | Part II. Rolling Statistics | [Here](./02_rolling_statistics.ipynb) |
+|  | Part III. Autocorrelation | [Here](./03_autocorrelation.ipynb) |
+|  | Part IV. Decomposition | [Here](./04_decomposition.ipynb) |
+| Practice  | Part V. Time Series Practice | [Here](./05_independent_practice.ipynb) |
+| Extra Materials | Part VI. Time Series Forecasting Models | [Here](./extra-materials/time_series_models.ipynb) |
+| Solutions  | Sample solutions for lesson prompts and practice activity | [Here](./solutions/) |
+| Data | 10 datasets used in lesson samples and practice activities | [Here](./datasets/) |
 
-> The Yelp dataset was chosen because of its rich and colloquial text attributes, in addition to how well it lends itself to sentiment analysis.
-
-> *Note: This lesson also uses the Naive Bayes model MultinomialNB, which is often used for NLP applications, such as spam detection. An appendix is included at the end of the lesson for interested students. Supplemental materials are also offered if you want to explore Bayes-related topics.*
 
 ---
 
 ## Learning Objectives
 
-By the end of this lesson, students should be able to:
-- **Discuss** the major tasks involved with natural language processing
-- **Discuss**, on a low level, the components of natural language processing
-- **Identify** why natural language processing is difficult
-- **Demonstrate** text classification
-- **Demonstrate** common text preprocessing techniques
+After this lessons, students will be able to:
+
+1. Explain how time series data are distinct and how to account for that.
+2. Create rolling means and plot time series data.
+3. Perform autocorrelation on sample time series data.
+4. Decompose time series data into trend and residual components.
+5. Bonus: Explain the benefits and drawbacks of ARIMA as compared to other methods.
 
 ---
 
 ## Student Requirements
 
-Before this lesson, students should already be able to:
-- Use Anaconda for package management
-- Use train/test/split to create a set of features and target values
-- Read data into a Pandas DataFrame
-- Build and evaluate predictive models using scikit-learn
+Before this lesson(s), students should already be able to:
+
+1. Manipulate data with Pandas.
+2. Create basic data visualizations with Matplotlib and Seaborn.
+3. Define and demonstrate techniques for correlating data points.
 
 ---
 
-## Lesson Guide
+## Lesson Outline
 
-- [Introduction to Natural Language Processing](#intro)
-- [Reading Yelp reviews with NLP](#yelp_rev)
-- [Text Classification](#text_class)
-- [Count Vectorization](#count_vec)
-    - [Using CountVectorizer in a model](#countvectorizer-model)
-    - [N-Grams](#ngrams)
-    - [Stopword Removal](#stopwords)
-	- [Count Vector Options](#cvec_opt)
-- [Intro to TextBlob](#textblob)
-	- [Stemming and Lemmatization](#stem)
-- [Term Frequency Inverse Document Frequency Vectorization](#tfidf)
-	- [Yelp Summary using TFIDF](#yelp_tfidf)
-- [Sentiment Analysis](#sentiment)
-- [BONUS: Adding Features to a Document Term Matrix](#add_feat)
-- [BONUS: More TextBlob Features](#more_textblob)
-- [APPENDIX: Intro to Naive Bayes & Text Classification](#bayes)
-- [Conclusion](#conclusion)
+> TOTAL (190 min)
+I. **Foundations** (190 min)
+* Part 1: Time Series Data (20 min)
+    * What is Time Series Data?
+    * Examples of Time Series Data and Domains That Find it Useful
+    * Trends and Seasonality
+    * Preprocessing Time Series Data With Pandas
+    * Processing Date Information as datetime Objects
+    * Filtering by Date With Pandas
+    * Differencing/Lagging
+* Practice (15 min)
+* Part 2: Rolling Means and Plotting Time Series Data (20 min)
+    * What is a Trend?
+    * Visualizing Trends
+    * Computing Aggregates With Pandas' .resample() Function
+    * Computing Rolling Averages With Pandas
+    * Other Pandas Window Functions (Rolling Sum, Rolling Max, Diff)
+    * Exponentially Weighted Windows
+    * Plotting Time Series Data
+* Practice (15 min)
+* Part 3: Autocorrelation on Time Series Data (25 min)
+    * Define Autocorrelation
+    * Examples of Autocorrelation
+    * Computing Autocorrelation
+    * Using the Pandas autocorr() Function
+Calculating and Plotting ACF and PACF Using StatsModels
+* Practice (15 min)
+* Part 4: Decomposing Time Series (15 min)
+    * Decomposing Time Series Into Trend, Seasonality, Cyclical, and Residual Components
+    * Using the .seasonal_decompose() Function
+    * Plotting the Seasonal, Trend, and Residual Components of a Time Series
+* Practice (15 min)
+* Closing and Recap (5 min)
+II. Bonus (30 min)
+* Time Series Forecasting Models (25 min)
+    * What are Time Series Models?
+    * Properties of Time Series Models
+    * Assumption of Stationarity
+    * Compare/Contrast Time Series Forecasting Models
+* Closing and Recap (5 min)
 
 ---
 
-## Installation Notes
-To procede through the lesson, first install `TextBlob` as explained below. We tend to prefer Anaconda-based installations, since they tend to be tested with our other Anaconda packages. However, in this case TextBlob is not available on some platforms with Anaconda (e.g. Win64). To install textblob:
-
-1. `conda install -c https://conda.anaconda.org/sloria textblob`
-
-**Or:**
-
-1. `pip install textblob`
-2. `python -m textblob.download_corpora lite`
-
-
----
 
 ## Additional Resources
-For more information, we recommend the following resources:
 
-- Check out this [Yelp blog post](http://engineeringblog.yelp.com/2015/09/automatically-categorizing-yelp-businesses.html) how they completed a classification task (with over 1000 response variables!) using restaurant review text
-- Always check documentation: [CountVectorizer](http://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html), [HashingVectorizer](http://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.HashingVectorizer.html), [TF-IDF](http://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html)
-- Wikpedia's [feature hashing](https://github.com/generalassembly-studio/DSI-course-materials/tree/master/curriculum/04-lessons/week-06/4.1-lesson) and [hash functions](https://en.wikipedia.org/wiki/Hash_function) is a great place to turn for more info on hashing
-- Charlie Greenbacher's [Intro to NLP](http://spark-public.s3.amazonaws.com/nlp/slides/intro.pdf)
-- Wikipedia includes a [walkthrough](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) of TF-IDF
-- Google's [ngram tool](https://books.google.com/ngrams/graph?content=data+science&year_start=1800&year_end=2000&corpus=15&smoothing=3&share=&direct_url=t1%3B%2Cdata%20science%3B%2Cc0)
-- An experiment using NLP and Eigenfaces (Eigenvalues for face recognition) [for Tinder](http://dataconomy.com/hacking-tinder-with-facial-recognition-nlp/)
+If you are interested in more resources, check out the following:
+* In Pandas' datetime library, search for more information on .dt [here](http://pandas.pydata.org/pandas-docs/stable/api.html).
+* For additional review of these concepts, see some inspiration from the [Python Data Science Handbook](https://jakevdp.github.io/PythonDataScienceHandbook/03.11-working-with-time-series.html).
+* There are lots of additional tutorials on ARIMA models out there; here is a [good one](http://www.statsref.com/HTML/index.html?arima.html).
