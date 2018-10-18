@@ -1,6 +1,6 @@
-# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Working with Time Series Data
+# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Working With API Data
 
-> Unit 4, Flex
+> Unit 4: Required
 
 ---
 
@@ -8,89 +8,117 @@
 
 | Topic | Description | Link |
 | --- | --- | --- |
-| Lesson | Part I. Working With Time Series Data | [Here](./01_time_series.ipynb) |
-|  | Part II. Rolling Statistics | [Here](./02_rolling_statistics.ipynb) |
-|  | Part III. Autocorrelation | [Here](./03_autocorrelation.ipynb) |
-|  | Part IV. Decomposition | [Here](./04_decomposition.ipynb) |
-| Practice  | Part V. Time Series Practice | [Here](./05_independent_practice.ipynb) |
-| Lesson | (*Bonus*) Part VI. Time Series Forecasting Models | [Here](./06_bonus_time_series_models.ipynb) |
-| Solutions  | Sample solutions for lesson prompts and practice activity | [Here](./solution-code/) |
-| Data | 10 datasets used in lesson samples and practice activities | [Here](./data/) |
-
+| Lesson | Part 1: APIs | [Here](./intro-to-web-services-apis.ipynb) |
+| Lesson | Part 2: Webscraping Demo (Optional; time permitting) | [Here](./webscraping-lab.ipynb) |
+| Solutions | Sample solutions to lesson prompts | [Here](./solutions/webscraping-lab-solutions.ipynb) |
+| Practice | In-Class Practice Using APIs | [Here](./practice/apis_practice-lab.ipynb) |
+|          | Case Study Twitter APIs and NLP           | [Here](./practice/twitter_api_nlp-lab.ipynb)  |
+|          | Practice Webscraping with Selenium (Requires Chrome)   | [Here](./practice/webscraping_selenium-lab.ipynb)       |
+| Practice Solutions  | Solution code for all 3 practice activities | [Here](./practice/solutions/) |
+> Please note: This lesson makes use of datasets from the `requests` library. The optional practice materials also include a `twitter-python` package. The webscraping module requires `selenium` and `geckodriver` and is best taught using Google Chrome.
 
 ---
 
 ## Learning Objectives
 
-After this lessons, students will be able to:
+#### Part 1: Intro to Web Services & APIs
+_After this lesson, students will be able to:_
+- Identify relevant HTTP Verbs & their uses.
+- Describe Application Programming Interfaces (APIs) and know how to make calls and consume API data.
+- Access public APIs and get information back.
+- Read and write data in JSON format.
+- Demonstrate how to use the `requests` library.
 
-1. Explain how time series data are distinct and how to account for that.
-2. Create rolling means and plot time series data.
-3. Perform autocorrelation on sample time series data.
-4. Decompose time series data into trend and residual components.
-5. Bonus: Explain the benefits and drawbacks of ARIMA as compared to other methods.
+#### Part 2: Webscraping Lab
+_After this lesson, students will be able to:_
+- Revisit how to locate elements on a webpage
+- Aquire unstructure data from the internet using Beautiful soup.
+- Discuss limitations associated with simple requests and urllib libraries
+- Introduce Selenium as a solution, and implement a scraper using selenium (Instructor Demo only)
 
 ---
 
 ## Student Requirements
 
 Before this lesson(s), students should already be able to:
-
-1. Manipulate data with Pandas.
-2. Create basic data visualizations with Matplotlib and Seaborn.
-3. Define and demonstrate techniques for correlating data points.
+- Interpret and use Python dictionaries
+- Build Pandas DataFrames from dictionaries
+- Perform simple data manipulation on Pandas objects\
+- Build `for` and `while` loops in Python
+- Use `pip install` for package management
 
 ---
 
 ## Lesson Outline
 
-> TOTAL (190 min)
-I. **Foundations** (190 min)
-* Part 1: Time Series Data (20 min)
-    * What is Time Series Data?
-    * Examples of Time Series Data and Domains That Find it Useful
-    * Trends and Seasonality
-    * Preprocessing Time Series Data With Pandas
-    * Processing Date Information as datetime Objects
-    * Filtering by Date With Pandas
-    * Differencing/Lagging
-* Practice (15 min)
-* Part 2: Rolling Means and Plotting Time Series Data (20 min)
-    * What is a Trend?
-    * Visualizing Trends
-    * Computing Aggregates With Pandas' .resample() Function
-    * Computing Rolling Averages With Pandas
-    * Other Pandas Window Functions (Rolling Sum, Rolling Max, Diff)
-    * Exponentially Weighted Windows
-    * Plotting Time Series Data
-* Practice (15 min)
-* Part 3: Autocorrelation on Time Series Data (25 min)
-    * Define Autocorrelation
-    * Examples of Autocorrelation
-    * Computing Autocorrelation
-    * Using the Pandas autocorr() Function
-Calculating and Plotting ACF and PACF Using StatsModels
-* Practice (15 min)
-* Part 4: Decomposing Time Series (15 min)
-    * Decomposing Time Series Into Trend, Seasonality, Cyclical, and Residual Components
-    * Using the .seasonal_decompose() Function
-    * Plotting the Seasonal, Trend, and Residual Components of a Time Series
-* Practice (15 min)
-* Closing and Recap (5 min)
-II. Bonus (30 min)
-* Time Series Forecasting Models (25 min)
-    * What are Time Series Models?
-    * Properties of Time Series Models
-    * Assumption of Stationarity
-    * Compare/Contrast Time Series Forecasting Models
-* Closing and Recap (5 min)
+### Outline: Part 1 (Web Services & APIs)
+> TOTAL (170 min)
+
+- Introduction to APIs
+- What is an API? (10 min)
+- Famous APIs (5 min)
+    - Facebook
+    - Yelp
+    - Echonest
+- Web APIs (5 min)
+- Making API calls (5 min)
+- HTTP (10 min)
+- Web applications (5 min)
+- Demo: HTTP (10 min)
+- Independent practice: HTTP (10 min)
+- HTTP Request (10 min)
+    - HTTP Request methods
+    - HTTP Request structure
+- HTTP Response (5 min)
+    - Response types overview
+- JSON (10 min)
+- Independent practice: validating JSON (10 min)
+- Guided practice: pulling data from APIs (35 min)
+    - Example: Star Wars (15 min)
+    - Submit queries to the API (10 min)
+- How does SSH work? (10 min)
+- OAuth (15 min)
+- Independent practice: python APIs (30 min)
+- Closing questions
+
+
+### Outline: Part 2 (Webscraping Lab)
+> TOTAL (170 min)
+
+- Introduction (10 min)
+- Building a web scraper (5 min)
+- Retrieving data from the HTML page (65 min)
+    - Retrieving the restaurant names (20 min)
+    - Challenge: Retrieving the restaurant locations (15 min)
+    - Retrieving the restaurant prices (10 min)
+    - Retrieving the restaurant number of bookings (20 min)
+- Introducting Selenium (90 min)
+    - Running JavaScript before scraping (15 min)
+    - Using regex to only get digits (20 min)
+    - Challenge: Use Pandas to create a DataFrame of bookings (40 min)
+    - Auto-typing using Selenium (15 min)
+- Summary
 
 ---
 
+## Installation Notes
+
+When running this lesson, please check the following environment requirements:
+1. Have Beautiful Soup installed: ```pip install bs4```
+
+
+**If including Selenium demo:**
+1.  Install Selenium: ```pip install selenium```
+1.  Install the [FireFox browser](https://www.mozilla.org/en-US/firefox/new/).
+1.  Install GeckoDriver: ```pip install geckodriver```
+
+---
 
 ## Additional Resources
 
-If you are interested in more resources, check out the following:
-* In Pandas' datetime library, search for more information on .dt [here](http://pandas.pydata.org/pandas-docs/stable/api.html).
-* For additional review of these concepts, see some inspiration from the [Python Data Science Handbook](https://jakevdp.github.io/PythonDataScienceHandbook/03.11-working-with-time-series.html).
-* There are lots of additional tutorials on ARIMA models out there; here is a [good one](http://www.statsref.com/HTML/index.html?arima.html).
+For more information on this topic, check out the following resources:
+
+- Find elements: [Selenium docs](http://selenium-python.readthedocs.io/locating-elements.html#locating-elements)
+- Using Selenium to enter website information: [demo](http://thiagomarzagao.com/2013/11/12/webscraping-with-selenium-part-1/)
+- Python regex tester: [here](http://pythex.org/)
+- Setup Firefox profile: [here](http://stackoverflow.com/questions/9907492/how-to-get-firefox-working-with-selenium-webdriver-on-mac-osx)
